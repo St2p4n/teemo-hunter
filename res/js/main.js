@@ -1,3 +1,18 @@
+import { Champs } from "./champs/Champs.js";
+import { Background } from "./ui/basic-ui.js";
+
+const jinx = new Champs("Arcane Jinx", 50, 20, 5);
+console.log(jinx);
+console.log(jinx.name);
+jinx.attack(); //vyvolá metodu
+
+const jax = new Champs("Arcane Jax", 50, 20, 5);
+console.log(jax);
+console.log(jax.name);
+jax.attack(); //změni to všechno na jaxe 
+
+const background = new Background();
+console.log(background);
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -29,11 +44,8 @@ document.addEventListener("keyup", (e) => {
     keys[e.code] = false;
 });
 
-ctx.fillStyle = "white";
-ctx.fillRect(0,0,1280,720);
-
 const gameLoop = () => {
-    console.log(keys)
+    ///console.log(keys)
     //resize canvas
     resizeCanvas();
     //clear canvas 
@@ -48,13 +60,12 @@ const gameLoop = () => {
 }
 
 const resizeCanvas = () => {
-    canvas.width = 1280;
-    canvas.height = 720;
-}
+ canvas.width = 1280;
+ canvas.height = 720;
+ }
 
-const clearCanvas = () => { // funkce budou prázdný
-  ctx.fillStyle = "white";
-  ctx.fillRect(0 ,0 ,1280 ,720);
+const clearCanvas = () => { 
+  background.draw(ctx);
 }
 
 const update = () => {
@@ -68,8 +79,6 @@ const render = () => {
 const getFps = () => {
     
 }
-
-
 
 window.onload = () => {
     window.requestAnimationFrame(gameLoop);
